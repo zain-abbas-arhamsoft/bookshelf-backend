@@ -1,7 +1,7 @@
 {
-  "name": "flo.ink-app",
+  "name": "book.shelf-app",
   "version": "1.0.0",
-  "description": "This is FLO ink app made with Express.js (Node.js).",
+  "description": "This is Book Shelf app made with Express.js (Node.js).",
   "author": "Arham",
   "main": "src/index.js",
   "private": true,
@@ -13,24 +13,15 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production pm2 start ./src/index.js -i max",
     "dev": "nodemon ./src/index.js",
-    "pm2": "pm2 start ./src/index.js --name=flo-ink-app",
-    "pm2-restart": "pm2 restart flo-ink-app",
-    "pm2-stop": "pm2 stop flo-ink-app",
-    "pm2-list": "pm2 list",
-    "pm2-delete": "pm2 delete flo-ink-app",
-    "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "test": "echo \"No tests specified\""
   },
   "keywords": [
     "MERN",
     "Node.js",
     "MongoDB",
-    "Flo.ink"
+    "BookShelf"
   ],
   "dependencies": {
-    "@superfaceai/passport-twitter-oauth2": "^1.2.4",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-session": "^2.1.0",
@@ -48,30 +39,10 @@
     "moment-timezone": "^0.5.45",
     "mongoose": "^8.1.3",
     "passport": "^0.7.0",
-    "passport-facebook": "^3.0.0",
-    "passport-google-oauth2": "^0.2.0",
-    "passport-local": "^1.0.0",
-    "passport-oauth2": "^1.8.0",
-    "passport-twitter": "^1.0.4"
+    "passport-local": "^1.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged"
-    }
-  },
+
   "devDependencies": {
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "nodemon": "^3.1.0",
-    "prettier": "^3.2.5",
-    "pretty-quick": "^4.0.0"
+    "nodemon": "^3.1.0"
   }
 }
