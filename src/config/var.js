@@ -9,4 +9,5 @@ module.exports = {
   bypassedRoutes: ["register", "login"],
   passwordEncryptionKey: process.env.PASSWORD_ENCRYPTION_KEY,
   jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
+  secretKey: process.env.SECRET_KEY
 };

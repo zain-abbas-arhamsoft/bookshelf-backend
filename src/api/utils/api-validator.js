@@ -6,15 +6,7 @@ const validateUser = ({ body }, res, next) => {
   const schema = Joi.object({
     email: Joi.string().email().required(),
     username: Joi.string().alphanum().min(2).max(30), // allow username field
-    firstName: Joi.string().alphanum().min(2).max(30).required(),
-    lastName: Joi.string().alphanum().min(2).max(30).required(),
-    country: Joi.string().alphanum().min(2).max(30).required(),
     password: Joi.string().required().min(6).max(128),
-    confirmPassword: Joi.string()
-      .valid(Joi.ref("password"))
-      .required()
-      .label("Confirm password")
-      .messages({ "any.only": "{{#label}} does not match password" }),
   });
   const { error } = schema.validate(body);
   if (error) {

@@ -10,7 +10,7 @@ const error = require("../api/utils/error");
 const passport = require("passport");
 const { port } = require("../config/var");
 const session = require("express-session"); // Import express-session
-// const { SECRET_KEY } = require("./var");
+const { secretKey } = require("./var");
 
 /**
  * express instance
@@ -36,13 +36,13 @@ app.use(
 );
 
 // // Use express-session for session management
-// app.use(
-//   session({
-//     secret: SECRET_KEY, // Replace with your own secret key
-//     resave: false,
-//     saveUninitialized: false,
-//   }),
-// );
+app.use(
+  session({
+    secret: secretKey, // Replace with your own secret key
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
