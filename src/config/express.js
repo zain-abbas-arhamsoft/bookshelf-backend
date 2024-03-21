@@ -6,12 +6,11 @@ const rateLimit = require("express-rate-limit");
 const bearerToken = require("express-bearer-token");
 const auth = require("../api/middlewares/auth");
 const routes = require("../api/routes/v1/index");
-const error = require("../api/utils/error");
+const error = require("../api/util/error");
 const passport = require("passport");
 const { port } = require("../config/var");
 const session = require("express-session"); // Import express-session
 const { secretKey } = require("./var");
-
 /**
  * express instance
  */

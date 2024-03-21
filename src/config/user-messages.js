@@ -2,6 +2,8 @@ module.exports = {
   // success messages
   userRegisterSuccess: "User registered successfully",
   userLoginSuccess: "User logged in successfully",
+  bookCreateSuccess: "Book created successfully",
+
   // error messages
   userAuthTokenError:
     "You are not authorized to access this request. Please provide valid access token",

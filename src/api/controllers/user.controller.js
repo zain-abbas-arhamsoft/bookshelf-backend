@@ -1,5 +1,5 @@
 const User = require("../models/user.model");
-const { checkDuplicate } = require("../utils/error");
+const { checkDuplicate } = require("../util/error");
 const {
   userRegisterSuccess,
   userLoginSuccess,
