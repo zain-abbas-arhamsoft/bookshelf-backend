@@ -8,7 +8,6 @@ const {
 exports.create = async (req, res) => {
     try {
         const { userId } = req;
-        const file = req.files.image[0];
         const image = req.files.image[0]?.path;
         await compressImage(req.files, image);
         const uploadResponse = await uploadImagesToCloudinary(image);
@@ -22,6 +21,7 @@ exports.create = async (req, res) => {
         }
         // Append userId to the request body
         req.body.userId = userId;
+        console.log(req.body)
         if (!genre) {
             return res.status(400).json({ success: false, message: "Invalid genre" });
         }

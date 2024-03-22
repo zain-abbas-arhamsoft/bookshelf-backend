@@ -14,7 +14,7 @@ const bookSchema = new mongoose.Schema({
     publicationDate: { type: Date },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     genre: { type: mongoose.Schema.Types.ObjectId, ref: 'Genre', required: true },
-    publicationYear: { type: Number },
+    publicationYear: { type: String },
     status: {
         type: String, enum: BookStatus, default: BookStatus[0]
     },
