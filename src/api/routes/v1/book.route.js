@@ -6,5 +6,5 @@ const { imageUpload } = require("../../util/upload");
 router.route("/create").post(imageUpload, controller.create);
 router.route("/genre").get(controller.getGenre);
 router.route("/books").get(controller.getAllBooks);
-
+router.route("/update-status").put(controller.updateStatus)
 module.exports = router;

@@ -21,7 +21,6 @@ exports.create = async (req, res) => {
         }
         // Append userId to the request body
         req.body.userId = userId;
-        console.log(req.body)
         if (!genre) {
             return res.status(400).json({ success: false, message: "Invalid genre" });
         }
@@ -59,5 +58,27 @@ exports.getAllBooks = async (req, res) => {
     } catch (error) {
         // If an error occurs, return a 500 status code with the error message
         res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+exports.updateStatus = async (req, res) => {
+    try {
+        const { status, bookId } = req.body;
+        // Assuming you have a Mongoose model named "YourModel"
+        const updatedDocument = await Book.findOneAndUpdate(
+            { _id: bookId }, // Filter by bookId
+            { status: status }, // Update the status
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedDocument) {
+            return res.status(404).json({ message: 'Document not found' });
+        }
+
+        res.status(200).json({ message: 'Document updated successfully', updatedDocument });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 };
