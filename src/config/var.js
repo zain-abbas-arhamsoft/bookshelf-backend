@@ -4,6 +4,7 @@ module.exports = {
   port: process.env.PORT,
   mongo: {
     uri: process.env.MONGO_URI,
+    onlineMongoUri: process.env.ONLINE_MONGO_URI
   },
   baseUrl: process.env.BASE_URL,
   bypassedRoutes: ["register", "login"],
@@ -13,5 +14,5 @@ module.exports = {
   cloudinaryName: process.env.CLOUDINARY_NAME,
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
   cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
-  tintPngApiKey: process.env.TINY_PNG_API_KEY
+  tintPngApiKey: process.env.TINY_PNG_API_KEY,
 };

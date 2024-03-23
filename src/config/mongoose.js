@@ -18,7 +18,7 @@ if (env === "development") {
  * @public
  */
 exports.connect = () => {
-  mongoose.connect(mongo.uri).then(() => console.log("Mongodb Connected!"));
+  mongoose.connect(mongo.onlineMongoUri).then(() => console.log("Mongodb Connected!"));
 
   return mongoose.connect;
 };
