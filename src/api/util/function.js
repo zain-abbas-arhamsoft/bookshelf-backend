@@ -36,7 +36,7 @@ async function imageUpload(req, filePath, name, userId, res) {
         const parts = uploadResponse?.secure_url?.split("/");
         const extractedPath = "/" + parts.slice(6).join("/");
 
-        const obj = { file: extractedPath};
+        const obj = { file: extractedPath };
 
         return sendSuccessResponse(
             res,
@@ -55,13 +55,12 @@ async function imageUpload(req, filePath, name, userId, res) {
 
 async function uploadImagesToCloudinary(image) {
     try {
-        // Handle the uploaded image response as needed
         var uploadResponse = await cloudinary.uploader.upload(image, {
             folder: "sellDigital", // Specify the folder name
             upload_preset: "sell_digital_images",
         });
     } catch (error) {
-        // Handle the error
+        console.log(error)
     }
     return uploadResponse;
 }

@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
  * @private
  */
 
-// Define enum for book status
 const BookStatus = ['Plan to Read', 'Reading', 'Completed'];
 const bookSchema = new mongoose.Schema({
     title: { type: String, required: true },

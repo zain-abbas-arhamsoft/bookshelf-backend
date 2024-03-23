@@ -5,12 +5,11 @@ const {
   userLoginSuccess,
   userLoginError,
   userLoginAuthError,
+  userRegisterError,
 } = require("../../config/user-messages");
-
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
-exports.register = async (req, res, next) => {
+exports.register = async (req, res) => {
   try {
     const payload = req.body;
     const { email } = payload;
@@ -19,7 +18,7 @@ exports.register = async (req, res, next) => {
       // Return an error if the user already exists
       return res.status(400).json({
         success: false,
-        message: "User already exists",
+        message: userRegisterError
       });
     }
     await User.create(payload);
@@ -28,12 +27,10 @@ exports.register = async (req, res, next) => {
   } catch (error) {
     const { code: errCode } = error;
     if (errCode === 11000) return checkDuplicate(error, res, "User");
-
-    return next(error);
   }
 };
 
-exports.login = async (req, res, next) => {
+exports.login = async (req, res,) => {
   try {
     passport.use(
       new LocalStrategy(
@@ -76,11 +73,10 @@ exports.login = async (req, res, next) => {
           accessToken,
         });
       }
-      // unknown user or wrong password
       else
         return res.status(400).send({ success: false, message: info.message });
     })(req, res);
   } catch (error) {
-    return next(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };

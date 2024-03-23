@@ -29,7 +29,7 @@ exports.create = async (req, res) => {
         const book = await Book.create({ ...req.body, genre: genre._id });
        return res.status(201).json({ success: true, message: bookCreateSuccess, book });
     } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -40,7 +40,7 @@ exports.getGenre = async (req, res) => {
         // Create the book with the reference to the genre
        return res.status(200).json({ success: true, data: genre });
     } catch (error) {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -48,7 +48,6 @@ exports.getAllBooks = async (req, res) => {
     try {
         const userId = req.userId;
         const books = await Book.find({ userId: userId }).populate('genre');
-        // If there are no books found, return a 404 status code with a message
         if (!books || books.length === 0) {
             return res.status(400).json({ success: false, message: "No books found" });
         }
@@ -56,7 +55,6 @@ exports.getAllBooks = async (req, res) => {
         // Return the list of books with their genres
        return res.status(200).json({ success: true, data: books });
     } catch (error) {
-        // If an error occurs, return a 500 status code with the error message
         res.status(500).json({ success: false, message: error.message });
     }
 };
@@ -64,11 +62,10 @@ exports.getAllBooks = async (req, res) => {
 exports.updateStatus = async (req, res) => {
     try {
         const { status, bookId } = req.body;
-        // Assuming you have a Mongoose model named "YourModel"
         const updatedDocument = await Book.findOneAndUpdate(
-            { _id: bookId }, // Filter by bookId
-            { status: status }, // Update the status
-            { new: true } // Return the updated document
+            { _id: bookId }, 
+            { status: status }, 
+            { new: true } 
         );
 
         if (!updatedDocument) {
@@ -83,8 +80,7 @@ exports.updateStatus = async (req, res) => {
 };
 exports.deleteAllUserBooks = async (req, res) => {
     try {
-        const userId = req.userId; // Assuming userId is available in the request object
-        // Assuming you have a reference to your Book model
+        const userId = req.userId;
         const deletedData = await Book.deleteMany({ userId: userId });
         if (deletedData.deletedCount == 0)
            return res.status(400).json({ message: 'User not exsist' });
