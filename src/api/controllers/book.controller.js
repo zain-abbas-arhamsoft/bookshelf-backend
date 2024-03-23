@@ -46,11 +46,11 @@ exports.getGenre = async (req, res) => {
 
 exports.getAllBooks = async (req, res) => {
     try {
-        // Fetch all books with their corresponding genres
-        const books = await Book.find().populate('genre');
+        const userId = req.userId; 
+        const books = await Book.find({ userId: userId }).populate('genre');
         // If there are no books found, return a 404 status code with a message
         if (!books || books.length === 0) {
-            return res.status(404).json({ success: false, message: "No books found" });
+            return res.status(400).json({ success: false, message: "No books found" });
         }
 
         // Return the list of books with their genres
@@ -60,7 +60,6 @@ exports.getAllBooks = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
 
 exports.updateStatus = async (req, res) => {
     try {
@@ -79,6 +78,17 @@ exports.updateStatus = async (req, res) => {
         res.status(200).json({ message: 'Document updated successfully', updatedDocument });
     } catch (error) {
         console.log(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+exports.deleteAllUserBooks = async (req, res) => {
+    try {
+        const userId = req.userId; // Assuming userId is available in the request object
+        // Assuming you have a reference to your Book model
+      const deletedData =   await Book.deleteMany({ userId: userId });
+        res.status(200).json({ message: 'All user books deleted successfully' });
+    } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
