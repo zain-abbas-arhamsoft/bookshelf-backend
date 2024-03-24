@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { mongo, env } = require("./var");
+// const { mongo, env } = require("./var");
 
 // exit application on error
 mongoose.connection.on("error", (err) => {
@@ -7,7 +7,7 @@ mongoose.connection.on("error", (err) => {
 });
 
 //  print mongoose logs in dev env
-if (env === "development") {
+if ("development" === "development") {
   mongoose.set("debug", true);
 }
 
@@ -18,7 +18,7 @@ if (env === "development") {
  * @public
  */
 exports.connect = () => {
-  mongoose.connect(mongo.onlineMongoUri).then(() => console.log("Mongodb Connected!"));
+  mongoose.connect('mongodb://127.0.0.1:27017/bookshelf').then(() => console.log("Mongodb Connected!"));
 
   return mongoose.connect;
 };

@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const moment = require("moment-timezone");
 const jwt = require("jwt-simple");
-const {
-  jwtExpirationInterval,
-  passwordEncryptionKey,
-} = require("../../config/var");
+// const {
+//   jwtExpirationInterval,
+//   passwordEncryptionKey,
+// } = require("../../config/var");
 
+const passwordEncryptionKey = "passwordEncryptionKey"
+const jwtExpirationInterval = 525600
 /**
  * User Model
  * @private
@@ -41,7 +43,7 @@ User.method({
       iat: moment().unix(),
       sub: this._id,
     };
-    return jwt.encode(payload, passwordEncryptionKey);
+    return jwt.encode(payload, "passwordEncryptionKey");
   },
 });
 

@@ -5,7 +5,8 @@ const fs = require("fs"); // Import the fs module
 const path = require("path");
 
 // Set your Tinify API key here
-tinify.key = `${process.env.TINY_PNG_API_KEY}`;
+// tinify.key = `${process.env.TINY_PNG_API_KEY}`;
+tinify.key = "9cd1FTw9ywDPm5Zmz3jCpxGyqh0QBl5b"
 const outputPath = path.join(__dirname, "../next/compressed_images");
 
 // Create the output folder if it doesn't exist

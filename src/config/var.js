@@ -6,7 +6,6 @@ module.exports = {
     uri: process.env.MONGO_URI,
     onlineMongoUri: process.env.ONLINE_MONGO_URI
   },
-  baseUrl: process.env.BASE_URL,
   bypassedRoutes: ["register", "login"],
   passwordEncryptionKey: process.env.PASSWORD_ENCRYPTION_KEY,
   jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
