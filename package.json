@@ -14,7 +14,7 @@
     "seed:genres": "node ./src/seeder/genre.js",
     "dev": "nodemon ./src/index.js",
     "test": "echo \"No tests specified\"",
-      "build": "mkdir -p public && npm run build"
+    "build": "mkdir -p public && npm run build"
   },
   "keywords": [
     "MERN",
