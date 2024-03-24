@@ -7,14 +7,14 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": ">=18",
-    "yarn": "*"
+    "node": ">=18"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production pm2 start ./src/index.js -i max",
     "seed:genres": "node ./src/seeder/genre.js",
     "dev": "nodemon ./src/index.js",
-    "test": "echo \"No tests specified\""
+    "test": "echo \"No tests specified\"",
+    "build": "echo \"No build step required for backend application\""
   },
   "keywords": [
     "MERN",
