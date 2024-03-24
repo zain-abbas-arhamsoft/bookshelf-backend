@@ -2,7 +2,7 @@
   "name": "book.shelf-app",
   "version": "1.0.0",
   "description": "This is Book Shelf app made with Express.js (Node.js).",
-  "author": "Arham",
+  "author": "Zain",
   "main": "src/index.js",
   "private": true,
   "license": "MIT",
