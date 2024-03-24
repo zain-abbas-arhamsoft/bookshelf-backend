@@ -18,7 +18,7 @@ if ("development" === "development") {
  * @public
  */
 exports.connect = () => {
-  mongoose.connect('mongodb://127.0.0.1:27017/bookshelf').then(() => console.log("Mongodb Connected!"));
+  mongoose.connect('mongodb+srv://zainabbaskhakhi123:xDCXRq0Jm71gC9PF@bookshelf.8oe1bor.mongodb.net/').then(() => console.log("Mongodb Connected!"));
 
   return mongoose.connect;
 };
