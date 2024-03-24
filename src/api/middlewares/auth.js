@@ -10,9 +10,11 @@ exports.authenticate = async (req, res, next) => {
     // check if user access token is valid or not
     const accessToken = headers.authorization.split(" ").pop();
     const user = await User.findOne({ accessToken }, "_id");
+    if (user === null)
+      return res.status(403).send({ success: false, message: userAuthTokenError });
+
     if (user) {
       req.userId = user._id;
-
       return next();
     }
   }
