@@ -2,7 +2,7 @@
   "name": "book.shelf-app",
   "version": "1.0.0",
   "description": "This is Book Shelf app made with Express.js (Node.js).",
-  "author": "Zain",
+  "author": "Book",
   "main": "src/index.js",
   "private": true,
   "license": "MIT",
@@ -13,8 +13,7 @@
     "start": "cross-env NODE_ENV=production pm2 start ./src/index.js -i max",
     "seed:genres": "node ./src/seeder/genre.js",
     "dev": "nodemon ./src/index.js",
-    "test": "echo \"No tests specified\"",
-    "build": "mkdir -p public && npm run build"
+    "test": "echo \"No tests specified\""
   },
   "keywords": [
     "MERN",
