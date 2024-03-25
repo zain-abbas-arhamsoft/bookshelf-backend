@@ -18,7 +18,7 @@ exports.register = async (req, res) => {
       // Return an error if the user already exists
       return res.status(400).json({
         success: false,
-        message: userRegisterError
+        message: userRegisterError,
       });
     }
     await User.create(payload);
@@ -30,7 +30,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res,) => {
+exports.login = async (req, res) => {
   try {
     passport.use(
       new LocalStrategy(
@@ -46,8 +46,8 @@ exports.login = async (req, res,) => {
             default:
               return done(null, user);
           }
-        },
-      ),
+        }
+      )
     );
     // call for passport authentication
     passport.authenticate("local", async (err, user, info) => {
@@ -60,11 +60,10 @@ exports.login = async (req, res,) => {
       // registered user
       else if (user) {
         const accessToken = await user.token();
-
         await User.updateOne(
           { _id: user._id },
           { $set: { accessToken } },
-          { upsert: true },
+          { upsert: true }
         );
 
         return res.status(200).json({
@@ -72,8 +71,7 @@ exports.login = async (req, res,) => {
           message: userLoginSuccess,
           accessToken,
         });
-      }
-      else
+      } else
         return res.status(400).send({ success: false, message: info.message });
     })(req, res);
   } catch (error) {
