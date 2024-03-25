@@ -49,8 +49,8 @@ async function imageUpload(req, filePath, name, userId, res) {
 async function uploadImagesToCloudinary(image) {
   try {
     var uploadResponse = await cloudinary.uploader.upload(image, {
-      folder: "sellDigital", // Specify the folder name
-      upload_preset: "sell_digital_images",
+      folder: "book_shelf", // Specify the folder name
+      upload_preset: "book_shelf_images",
     });
   } catch (error) {
     console.log(error);
