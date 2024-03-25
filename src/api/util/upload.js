@@ -9,11 +9,9 @@ const filesDir = path.join(uploadsDir, "files");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // Make uploads directory if it does not exist
         if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
         if (!fs.existsSync(imagesDir)) fs.mkdirSync(imagesDir);
         if (!fs.existsSync(filesDir)) fs.mkdirSync(filesDir);
-        // Determine where to store the file based on its type
         if (file.fieldname === "image") {
             cb(null, imagesDir);
         } else {

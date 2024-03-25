@@ -37,7 +37,7 @@ app.use(
 // Use express-session for session management
 app.use(
   session({
-    secret: "secretKey", // Replace with your own secret key
+    secret: secretKey, // Replace with your own secret key
     resave: false,
     saveUninitialized: false,
   }),

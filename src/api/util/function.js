@@ -1,6 +1,6 @@
 const { cloudinary } = require("../util/cloudinary");
 const tinify = require("tinify");
-const fs = require("fs"); // Import the fs module
+const fs = require("fs");
 const path = require("path");
 const { tintPngApiKey } = require("../../config/var.js");
 // Set your Tinify API key here
@@ -15,16 +15,12 @@ if (!fs.existsSync(outputPath)) {
 async function compressImage(files, image) {
   const inputImageBuffer = fs.readFileSync(image);
   const source = await tinify.fromBuffer(inputImageBuffer);
-  // Compress the image using TinyPNG and store the result in 'compressedImageBuffer'
   const compressedImageBuffer = await source.toBuffer();
   let uniqueFileName = "";
   if (files.image) {
     uniqueFileName = files.image[0]?.originalname;
   }
-  // uniqueFileName = `${files.image[0]?.originalname}`;
-  // Specify the output file path with the unique file name
   const outputFilePath = `${outputPath}/${uniqueFileName}`;
-  // Write the compressed image buffer to the specified output file path
   fs.writeFileSync(outputFilePath, compressedImageBuffer);
 }
 async function imageUpload(req, filePath, name, userId, res) {
