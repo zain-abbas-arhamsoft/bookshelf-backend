@@ -2,13 +2,10 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const moment = require("moment-timezone");
 const jwt = require("jsonwebtoken");
-// const {
-//   jwtExpirationInterval,
-//   passwordEncryptionKey,
-// } = require("../../config/var");
-
-const passwordEncryptionKey = "passwordEncryptionKey"
-const jwtExpirationInterval = 1440
+const {
+  jwtExpirationInterval,
+  passwordEncryptionKey,
+} = require("../../config/var");
 /**
  * User Model
  * @private
@@ -38,7 +35,7 @@ User.method({
       sub: this._id,
       sub: this._id,
     };
-    return jwt.sign(payload, "passwordEncryptionKey");
+    return jwt.sign(payload, passwordEncryptionKey);
   },
 });
 

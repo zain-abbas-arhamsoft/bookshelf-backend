@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
-// const { mongo, env } = require("./var");
-
+const { mongo, env } = require("./var");
 // exit application on error
 mongoose.connection.on("error", (err) => {
   process.exit(err);
 });
 
-//  print mongoose logs in dev env
-if ("development" === "development") {
+if (env === "development") {
   mongoose.set("debug", true);
 }
 
@@ -18,7 +16,9 @@ if ("development" === "development") {
  * @public
  */
 exports.connect = () => {
-  mongoose.connect('mongodb+srv://zainabbaskhakhi123:xDCXRq0Jm71gC9PF@bookshelf.8oe1bor.mongodb.net/').then(() => console.log("Mongodb Connected!"));
+  mongoose
+    .connect(mongo.mongoUri)
+    .then(() => console.log("Mongodb Connected!"));
 
   return mongoose.connect;
 };

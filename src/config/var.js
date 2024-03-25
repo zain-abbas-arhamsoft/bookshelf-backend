@@ -4,7 +4,7 @@ module.exports = {
   port: process.env.PORT,
   mongo: {
     uri: process.env.MONGO_URI,
-    onlineMongoUri: process.env.ONLINE_MONGO_URI
+    mongoUri: process.env.ONLINE_MONGO_URI,
   },
   bypassedRoutes: ["register", "login"],
   passwordEncryptionKey: process.env.PASSWORD_ENCRYPTION_KEY,

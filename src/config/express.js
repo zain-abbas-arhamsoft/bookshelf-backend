@@ -8,9 +8,9 @@ const auth = require("../api/middlewares/auth");
 const routes = require("../api/routes/v1/index");
 const error = require("../api/util/error");
 const passport = require("passport");
-// const { port } = require("../config/var");
+const { port } = require("../config/var");
 const session = require("express-session"); // Import express-session
-// const { secretKey } = require("./var");
+const { secretKey } = require("./var");
 /**
  * express instance
  */
@@ -34,7 +34,7 @@ app.use(
   }),
 );
 
-// // Use express-session for session management
+// Use express-session for session management
 app.use(
   session({
     secret: "secretKey", // Replace with your own secret key
@@ -65,6 +65,5 @@ app.use(error.converter);
 app.use(error.notFound);
 app.use(error.handler);
 
-http.listen("8080");
-
+http.listen(port);
 module.exports = app;
